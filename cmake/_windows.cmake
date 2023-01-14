@@ -1,3 +1,4 @@
+# TODO: change these hardcoded values
 set(Python3_EXECUTABLE "C:\\Users\\banes\\miniconda3\\envs\\pyvista\\python.exe" CACHE STRING "")
 # import sysconfig; print(sysconfig.get_config_var('LIBDEST'))
 set(Python3_LIBRARIES "C:\\Users\\banes\\miniconda3\\envs\\pyvista\\Lib" CACHE STRING "")

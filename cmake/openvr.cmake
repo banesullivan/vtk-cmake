@@ -3,6 +3,7 @@ include("${CMAKE_CURRENT_LIST_DIR}/_windows.cmake")
 
 # Make sure to comment out where this is disabled in `_modules.cmake`
 set(VTK_MODULE_ENABLE_VTK_RenderingOpenVR YES CACHE STRING "")
+set(VTK_BUILD_PYI_FILES OFF CACHE BOOL "")
 
 set(VTK_DIST_NAME_SUFFIX "openvr" CACHE STRING "")
 
