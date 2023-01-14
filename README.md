@@ -29,3 +29,12 @@ The enabled/disabled modules follow a similar specification to the default for w
 This has the behaviour of "enable all, disable some".
 
 Additionally Qt and MPI are disabled in these configurations.
+
+
+## Windows Notes
+
+Some reminders for how to build on windows:
+
+- Use "Developer Command Prompt for VS 2022"
+- To clear out the `build` directory: `rmdir \s build`
+- Caching doesn't work? If `cmake` fails then the whole build directory has to be cleared.
