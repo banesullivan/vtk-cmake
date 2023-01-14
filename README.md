@@ -35,6 +35,5 @@ Additionally Qt and MPI are disabled in these configurations.
 
 Some reminders for how to build on windows:
 
-- Use "Developer Command Prompt for VS 2022"
-- To clear out the `build` directory: `rmdir \s build`
-- Caching doesn't work? If `cmake` fails then the whole build directory has to be cleared.
+- Use "x64 Native Tools Command Prompt" for the installed Visual Studio
+version to configure with CMake and to build with ninja.
