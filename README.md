@@ -63,7 +63,7 @@ Some reminders for how to build on windows:
 
 - Use "x64 Native Tools Command Prompt" for the installed Visual Studio
 version to configure with CMake and to build with ninja.
-
+- Many of the necessary Python paths are hardcoded in the configurations (for my local machine) and need to be updated per-environment.
 
 ### OpenVR
 
