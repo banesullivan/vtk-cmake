@@ -13,7 +13,26 @@ CMake configurations for how I like to build VTK.
     ```
     ninja
     ```
+5. Make a wheel (will then be generated in `VTK/build/dist`)
+    ```
+    python setup.py bdist_wheel
+    ```
 
+
+For example:
+
+```
+git clone https://github.com/Kitware/VTK.git
+cd VTK
+git checkout release
+mkdir build
+git clone https://github.com/banesullivan/vtk-cmake.git
+cp vtk-cmake/cmake/*.cmake build/
+cd build
+cmake -GNinja -C osmesa.cmake ..
+ninja
+python setup.py bdist_wheel
+```
 
 ## Contributing
 
@@ -29,6 +48,13 @@ The enabled/disabled modules follow a similar specification to the default for w
 This has the behaviour of "enable all, disable some".
 
 Additionally Qt and MPI are disabled in these configurations.
+
+
+Some additions
+
+- `Module_vtkAcceleratorsVTKm:BOOL=OFF`
+
+
 
 
 ## Windows Notes
