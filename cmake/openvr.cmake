@@ -1,5 +1,4 @@
-include("${CMAKE_CURRENT_LIST_DIR}/_base.cmake")
-include("${CMAKE_CURRENT_LIST_DIR}/_windows.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/windows.cmake")
 
 # Make sure to comment out where this is disabled in `_modules.cmake`
 set(VTK_MODULE_ENABLE_VTK_RenderingOpenVR YES CACHE STRING "")

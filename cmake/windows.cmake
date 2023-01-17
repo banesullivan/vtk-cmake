@@ -1,3 +1,5 @@
+include("${CMAKE_CURRENT_LIST_DIR}/_base.cmake")
+
 # TODO: change these hardcoded values
 set(Python3_EXECUTABLE "C:\\Users\\banes\\miniconda3\\envs\\pyvista\\python.exe" CACHE STRING "")
 # import sysconfig; print(sysconfig.get_config_var('LIBDEST'))
