@@ -3,6 +3,7 @@
 set(VTK_ENABLE_REMOTE_MODULES OFF CACHE BOOL "")
 # Enable everything by default
 set(VTK_BUILD_ALL_MODULES ON CACHE BOOL "")
+VTK_MODULE_ENABLE_VTK_RenderingMatplotlib
 # Disable some things
     #   ref https://gitlab.kitware.com/vtk/vtk/-/blob/master/.gitlab/ci/configure_macos.cmake
     # Modules which require software not on CI machines.
@@ -23,7 +24,7 @@ set(VTK_MODULE_ENABLE_VTK_IOPostgreSQL NO CACHE STRING "") # postgresql
 set(VTK_MODULE_ENABLE_VTK_InfovisBoost NO CACHE STRING "") # boost
 set(VTK_MODULE_ENABLE_VTK_InfovisBoostGraphAlgorithms NO CACHE STRING "") # boost
 set(VTK_MODULE_ENABLE_VTK_RenderingFreeTypeFontConfig NO CACHE STRING "") # fontconfig
-set(VTK_MODULE_ENABLE_VTK_RenderingMatplotlib NO CACHE STRING "") # matplotlib
+# set(VTK_MODULE_ENABLE_VTK_RenderingMatplotlib NO CACHE STRING "") # matplotlib
 set(VTK_MODULE_ENABLE_VTK_RenderingOpenVR NO CACHE STRING "") # openvr
 set(VTK_MODULE_ENABLE_VTK_RenderingOpenXR NO CACHE STRING "") # OpenXR
 set(VTK_MODULE_ENABLE_VTK_RenderingRayTracing NO CACHE STRING "") # ospray
