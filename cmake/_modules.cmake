@@ -3,7 +3,7 @@
 set(VTK_ENABLE_REMOTE_MODULES OFF CACHE BOOL "")
 # Enable everything by default
 set(VTK_BUILD_ALL_MODULES ON CACHE BOOL "")
-VTK_MODULE_ENABLE_VTK_RenderingMatplotlib
+# set(VTK_MODULE_ENABLE_VTK_RenderingMatplotlib YES CACHE STRING "")
 # Disable some things
     #   ref https://gitlab.kitware.com/vtk/vtk/-/blob/master/.gitlab/ci/configure_macos.cmake
     # Modules which require software not on CI machines.
