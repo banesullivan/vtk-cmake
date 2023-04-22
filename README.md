@@ -69,3 +69,20 @@ version to configure with CMake and to build with ninja.
 
 - `VTK_BUILD_PYI_FILES` must be set to OFF
 - Copy `openvr_api.dll` to the installed `vtkmodules` path
+
+
+## Linux Build Dependencies
+
+I think these are all the system dependencies needed:
+
+```
+sudo apt-get update
+sudo apt-get install --no-install-recommends --yes \
+  build-essential \
+  libosmesa6-dev \
+  cmake \
+  ninja-build \
+  libboost-all-dev
+```
+
+And Python of course :)
