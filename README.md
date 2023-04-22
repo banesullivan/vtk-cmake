@@ -55,20 +55,9 @@ Some additions
 - `Module_vtkAcceleratorsVTKm:BOOL=OFF`
 
 
+## Further Resources
 
-
-## Windows Notes
-
-Some reminders for how to build on windows:
-
-- Use "x64 Native Tools Command Prompt" for the installed Visual Studio
-version to configure with CMake and to build with ninja.
-- Many of the necessary Python paths are hardcoded in the configurations (for my local machine) and need to be updated per-environment.
-
-### OpenVR
-
-- `VTK_BUILD_PYI_FILES` must be set to OFF
-- Copy `openvr_api.dll` to the installed `vtkmodules` path
+See [VTK's build notes](https://gitlab.kitware.com/vtk/vtk/-/blob/master/Documentation/dev/build.md#building-vtk)
 
 
 ## Linux Build Dependencies
@@ -86,3 +75,17 @@ sudo apt-get install --no-install-recommends --yes \
 ```
 
 And Python of course :)
+
+
+## Windows Notes
+
+Some reminders for how to build on windows:
+
+- Use "x64 Native Tools Command Prompt" for the installed Visual Studio
+version to configure with CMake and to build with ninja.
+- Many of the necessary Python paths are hardcoded in the configurations (for my local machine) and need to be updated per-environment.
+
+### OpenVR
+
+- `VTK_BUILD_PYI_FILES` must be set to OFF
+- Copy `openvr_api.dll` to the installed `vtkmodules` path
