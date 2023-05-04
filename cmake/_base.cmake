@@ -16,6 +16,7 @@ set(CMAKE_BUILD_TYPE "Release" CACHE STRING "")
 set(VTK_VERSION_SUFFIX "" CACHE STRING "")
 
 # Wheel configuration
+set(VTK_INSTALL_SDK ON CACHE STRING "")  # wheels turn this off by default
 set(VTK_WHEEL_BUILD ON CACHE STRING "")
 set(VTK_PYTHON_VERSION "3" CACHE STRING "")
 # configuration_flag(VTK_WRAP_PYTHON "python")
