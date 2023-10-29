@@ -23,7 +23,7 @@ concurrency:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: vtk-python
+  IMAGE_NAME: vtk-python-slim
 
 jobs:
   build-and-publish:
