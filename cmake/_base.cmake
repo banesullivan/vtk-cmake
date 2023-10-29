@@ -13,8 +13,6 @@ set(CMAKE_BUILD_TYPE "Release" CACHE STRING "")
 # set(VTK_DEBUG_LEAKS ON CACHE STRING "")
 # set(VTK_SMP_ENABLE_STDTHREAD OFF CACHE STRING "")
 
-set(VTK_VERSION_SUFFIX "" CACHE STRING "")
-
 # Wheel configuration
 set(VTK_INSTALL_SDK ON CACHE STRING "")  # wheels turn this off by default
 set(VTK_WHEEL_BUILD ON CACHE STRING "")

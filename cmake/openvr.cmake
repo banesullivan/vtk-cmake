@@ -4,7 +4,8 @@ include("${CMAKE_CURRENT_LIST_DIR}/windows.cmake")
 set(VTK_MODULE_ENABLE_VTK_RenderingOpenVR YES CACHE STRING "")
 set(VTK_BUILD_PYI_FILES OFF CACHE BOOL "")
 
-set(VTK_DIST_NAME_SUFFIX "openvr" CACHE STRING "")
+set(VTK_DIST_NAME_SUFFIX "" CACHE STRING "")
+set(VTK_VERSION_SUFFIX "post0+openvr" CACHE STRING "")
 
 # TODO: change these hardcoded values
 set(OpenVR_INCLUDE_DIR "C:\\Users\\banes\\source\\repos\\openvr-1.23.7\\headers" CACHE STRING "")

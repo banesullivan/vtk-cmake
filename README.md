@@ -2,6 +2,27 @@
 
 CMake configurations for how I like to build VTK.
 
+## Automated Build
+
+I have set up a Docker build to generate a VTK wheel and install it into the `python:3.11-slim`
+base image. You can can build an OSMesa wheel by:
+
+```bash
+docker build -t vtk-python .
+```
+
+Or you can specify a specific version of VTK by:
+
+```bash
+docker build --build-arg='VTK_VERSION=9.3.0' -t vtk-python .
+```
+
+After building, you can extract the wheel or use that base image for all your VTK Python needs.
+
+The wheel is saved uner `/opt/vtk/`
+
+## Manual Build
+
 1. Copy/paste the `*.cmake` files in the `cmake/` directory here to your build directory.
 2. Choose a build configuration. Each configuration is a `.cmake` file without the `_` prefix.
     - For example, to build the OSMESA variant, choose the `osmesa.cmake` configuration
@@ -18,7 +39,6 @@ CMake configurations for how I like to build VTK.
     python setup.py bdist_wheel
     ```
 
-
 For example:
 
 ```
@@ -33,6 +53,8 @@ cmake -GNinja -C osmesa.cmake ..
 ninja
 python setup.py bdist_wheel
 ```
+
+Reference `scripts/build.sh`
 
 ## Contributing
 

@@ -1,0 +1,4 @@
+.vscode/
+vtk/
+*.png
+*.whl
