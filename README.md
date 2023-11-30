@@ -8,18 +8,32 @@ I have set up a Docker build to generate a VTK wheel and install it into the `py
 base image. You can can build an OSMesa wheel by:
 
 ```bash
-docker build -t vtk-python .
+docker build --target slim -t vtk-python .
 ```
 
-Or you can specify a specific version of VTK by:
+Or you can specify specific versions of Python and VTK by:
 
 ```bash
-docker build --build-arg='VTK_VERSION=9.3.0' -t vtk-python .
+# Build with Python 3.9
+docker build --target slim --build-arg='PYTHON_VERSION=3.9' -t vtk-python .
+
+# Build VTK 9.3 with EGL (defaults to Python 3.11)
+docker build --target slim --build-arg='VTK_VERSION=9.3.0' --build-arg='VTK_VARIANT=egl' -t vtk-python .
 ```
 
 After building, you can extract the wheel or use that base image for all your VTK Python needs.
 
 The wheel is saved uner `/opt/vtk/`
+
+To run a JupyterLab instance with EGL and access to NVIDIA GPUs:
+
+```bash
+# Build VTK 9.3 with EGL for use in Jupyter
+docker build --target jupyter --build-arg='VTK_VERSION=9.3.0' --build-arg='VTK_VARIANT=egl' -t pyvista-gpu .
+
+# Run the image with NVIDIA runtime and GPU access
+docker run -it -p 8888:8888 --rm --runtime=nvidia --gpus all pyvista-gpu
+```
 
 ## Manual Build
 
