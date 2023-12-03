@@ -55,8 +55,6 @@ USER ${NB_USER}
 # If building JupyterLab, give them PyVista because it's awesome
 #  and how else would they do plotting in Jupyter?
 RUN pip install jupyterlab 'pyvista[jupyter]'
-# https://github.com/Kitware/trame-vtk/issues/55
-RUN pip install 'aiohttp<3.9'
 
 # ENV JUPYTER_ENABLE_LAB=yes
 ENV PYVISTA_TRAME_SERVER_PROXY_PREFIX='/proxy/'

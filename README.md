@@ -2,23 +2,59 @@
 
 CMake configurations for how I like to build VTK.
 
-## Automated Build
+## Pull Pre-built Images
 
-I have set up a Docker build to generate a VTK wheel and install it into the `python:3.11-slim`
-base image. You can can build an OSMesa wheel by:
+I've built Docker images for a few Python and VTK versions and pushed them to the
+following images in this repositories container registry:
+
+- `ghcr.io/banesullivan/pyvista`: PyVista configured for JupyterLab (VTK OSMesa)
+- `ghcr.io/banesullivan/pyvista-gpu`: PyVista configured for JupyterLab (VTK EGL for use with NVIDIA GPUs)
+- `ghcr.io/banesullivan/vtk-python`: Python slim image with VTK (OSMesa) installed.
+
+The tags for these images follow the format `{Python Version}-{VTK version}`. For example,
+the image with Python version 3.11 and VTK version 9.3.0 would be: `ghcr.io/banesullivan/pyvista:3.11-9.3.0`
+
+You can pull this image from the container registry here:
 
 ```bash
-docker build --target slim -t vtk-python .
+docker pull ghcr.io/banesullivan/pyvista:3.11-9.3.0
+```
+
+To run it:
+
+```bash
+docker run -it -p 8888:8888 --rm ghcr.io/banesullivan/pyvista:3.11-9.3.0
+```
+
+There is also a GPU version ready for use with NVIDIA hardware:
+
+```bash
+docker pull ghcr.io/banesullivan/pyvista-gpu:3.11-9.3.0
+docker run -it -p 8888:8888 --rm --runtime=nvidia --gpus all ghcr.io/banesullivan/pyvista-gpu:3.11-9.3.0
+```
+
+## Build it yourself
+
+I have set up a Docker build to generate a VTK wheel and install that wheel along with PyVista in
+a Docker image with JupyterLab ready to go. There are two targets for the build:
+
+- `slim`: Builds and installs VTK into a python-slim image (without PyVista)
+- `jupyter`: Builds and installs VTK with Python and JupyterLab
+
+To build the slim image
+
+```bash
+docker build --target slim -t ghcr.io/banesullivan/vtk-python .
 ```
 
 Or you can specify specific versions of Python and VTK by:
 
 ```bash
 # Build with Python 3.9
-docker build --target slim --build-arg='PYTHON_VERSION=3.9' -t vtk-python .
+docker build --target slim --build-arg='PYTHON_VERSION=3.9' -t ghcr.io/banesullivan/vtk-python .
 
 # Build VTK 9.3 with EGL (defaults to Python 3.11)
-docker build --target slim --build-arg='VTK_VERSION=9.3.0' --build-arg='VTK_VARIANT=egl' -t vtk-python .
+docker build --target slim --build-arg='VTK_VERSION=9.3.0' --build-arg='VTK_VARIANT=egl' -t ghcr.io/banesullivan/vtk-python .
 ```
 
 After building, you can extract the wheel or use that base image for all your VTK Python needs.
@@ -29,10 +65,24 @@ To run a JupyterLab instance with EGL and access to NVIDIA GPUs:
 
 ```bash
 # Build VTK 9.3 with EGL for use in Jupyter
-docker build --target jupyter --build-arg='VTK_VERSION=9.3.0' --build-arg='VTK_VARIANT=egl' -t pyvista-gpu .
+docker build --target jupyter --build-arg='VTK_VERSION=9.3.0' --build-arg='VTK_VARIANT=egl' -t ghcr.io/banesullivan/pyvista-gpu .
 
 # Run the image with NVIDIA runtime and GPU access
-docker run -it -p 8888:8888 --rm --runtime=nvidia --gpus all pyvista-gpu
+docker run -it -p 8888:8888 --rm --runtime=nvidia --gpus all ghcr.io/banesullivan/pyvista-gpu
+```
+
+PyVista/VTK with OSMesa (CPU-rendering) in JupyterLab:
+```bash
+docker build --target jupyter --build-arg='VTK_VERSION=9.3.0' --build-arg='VTK_VARIANT=osmesa' -t ghcr.io/banesullivan/pyvista:3.11-9.3.0 .
+
+docker run -it -p 8888:8888 --rm --runtime=nvidia --gpus all ghcr.io/banesullivan/pyvista:3.11-9.3.0
+```
+
+PyVista/VTK with EGL (GPU-rendering) in JupyterLab:
+```bash
+docker build --target jupyter --build-arg='VTK_VERSION=9.3.0' --build-arg='VTK_VARIANT=egl' -t ghcr.io/banesullivan/pyvista-gpu:3.11-9.3.0 .
+
+docker run -it -p 8888:8888 --rm --runtime=nvidia --gpus all ghcr.io/banesullivan/pyvista-gpu:3.11-9.3.0
 ```
 
 ## Manual Build
