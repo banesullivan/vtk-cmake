@@ -10,9 +10,7 @@ if [[ "${VTK_VARIANT}" == "egl" ]]; then
     echo "Installing runtime dependencies for EGL variant"
     apt-get install --no-install-recommends --yes \
         libopengl0 \
-        libglvnd0 \
         libgl1 \
-        libglx0 \
         libegl1
 elif [[ "${VTK_VARIANT}" == "osmesa" ]]; then
     echo "Installing runtime dependencies for OSMesa variant"
