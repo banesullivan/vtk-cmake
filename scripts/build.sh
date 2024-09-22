@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e -u -x
-
-git clone https://gitlab.kitware.com/vtk/vtk.git --depth 1 --branch "v${VTK_VERSION:-9.2.6}" vtk
+git clone https://gitlab.kitware.com/vtk/vtk.git --depth 1 --branch "v${VTK_VERSION:-9.3.1}" vtk
 mkdir -p vtk/build
 cp cmake/*.cmake vtk/build/
 

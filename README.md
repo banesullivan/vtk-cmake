@@ -9,7 +9,7 @@ following images in this repositories container registry:
 
 - `ghcr.io/banesullivan/pyvista`: PyVista configured for JupyterLab (VTK OSMesa)
 - `ghcr.io/banesullivan/pyvista-gpu`: PyVista configured for JupyterLab (VTK EGL for use with NVIDIA GPUs)
-- `ghcr.io/banesullivan/vtk-python`: Python slim image with VTK (OSMesa) installed.
+- `ghcr.io/banesullivan/python-vtk`: Python slim image with VTK (OSMesa) installed.
 
 The tags for these images follow the format `{Python Version}-{VTK version}`. For example,
 the image with Python version 3.11 and VTK version 9.3.0 would be: `ghcr.io/banesullivan/pyvista:3.11-9.3.0`
@@ -44,17 +44,17 @@ a Docker image with JupyterLab ready to go. There are two targets for the build:
 To build the slim image
 
 ```bash
-docker build --target slim -t ghcr.io/banesullivan/vtk-python .
+docker build --target slim -t ghcr.io/banesullivan/python-vtk .
 ```
 
 Or you can specify specific versions of Python and VTK by:
 
 ```bash
-# Build with Python 3.9
-docker build --target slim --build-arg='PYTHON_VERSION=3.9' -t ghcr.io/banesullivan/vtk-python .
+# Build with Python 3.12
+docker build --target slim --build-arg='PYTHON_VERSION=3.12' -t ghcr.io/banesullivan/python-vtk .
 
-# Build VTK 9.3 with EGL (defaults to Python 3.11)
-docker build --target slim --build-arg='VTK_VERSION=9.3.0' --build-arg='VTK_VARIANT=egl' -t ghcr.io/banesullivan/vtk-python .
+# Build VTK 9.3 with EGL (defaults to Python 3.12)
+docker build --target slim --build-arg='VTK_VERSION=9.3.1' --build-arg='VTK_VARIANT=egl' -t ghcr.io/banesullivan/python-vtk .
 ```
 
 After building, you can extract the wheel or use that base image for all your VTK Python needs.

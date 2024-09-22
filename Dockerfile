@@ -1,4 +1,4 @@
-ARG PYTHON_VERSION=3.11
+ARG PYTHON_VERSION=3.12
 
 FROM python:${PYTHON_VERSION} as builder
 
@@ -11,7 +11,10 @@ WORKDIR /app
 # Install build dependencies
 RUN ./scripts/install.sh
 
-ARG VTK_VERSION=9.2.6
+RUN pip install --upgrade pip
+RUN pip install setuptools wheel
+
+ARG VTK_VERSION="9.3.1"
 ARG VTK_VARIANT="osmesa"
 RUN VTK_VERSION=${VTK_VERSION} VTK_VARIANT=${VTK_VARIANT} ./scripts/build.sh
 
