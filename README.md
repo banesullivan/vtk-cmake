@@ -17,20 +17,20 @@ the image with Python version 3.11 and VTK version 9.3.0 would be: `ghcr.io/bane
 You can pull this image from the container registry here:
 
 ```bash
-docker pull ghcr.io/banesullivan/pyvista:3.11-9.3.0
+docker pull ghcr.io/banesullivan/pyvista:3.12-9.3.1
 ```
 
 To run it:
 
 ```bash
-docker run -it -p 8888:8888 --rm ghcr.io/banesullivan/pyvista:3.11-9.3.0
+docker run -it -p 8888:8888 --rm ghcr.io/banesullivan/pyvista:3.12-9.3.1
 ```
 
 There is also a GPU version ready for use with NVIDIA hardware:
 
 ```bash
-docker pull ghcr.io/banesullivan/pyvista-gpu:3.11-9.3.0
-docker run -it -p 8888:8888 --rm --runtime=nvidia --gpus all ghcr.io/banesullivan/pyvista-gpu:3.11-9.3.0
+docker pull ghcr.io/banesullivan/pyvista-gpu:3.12-9.3.1
+docker run -it -p 8888:8888 --rm --runtime=nvidia --gpus all ghcr.io/banesullivan/pyvista-gpu:3.12-9.3.1
 ```
 
 ## Build it yourself
@@ -65,7 +65,7 @@ To run a JupyterLab instance with EGL and access to NVIDIA GPUs:
 
 ```bash
 # Build VTK 9.3 with EGL for use in Jupyter
-docker build --target jupyter --build-arg='VTK_VERSION=9.3.0' --build-arg='VTK_VARIANT=egl' -t ghcr.io/banesullivan/pyvista-gpu .
+docker build --target jupyter --build-arg='VTK_VERSION=9.3.1' --build-arg='VTK_VARIANT=egl' -t ghcr.io/banesullivan/pyvista-gpu .
 
 # Run the image with NVIDIA runtime and GPU access
 docker run -it -p 8888:8888 --rm --runtime=nvidia --gpus all ghcr.io/banesullivan/pyvista-gpu
@@ -73,16 +73,16 @@ docker run -it -p 8888:8888 --rm --runtime=nvidia --gpus all ghcr.io/banesulliva
 
 PyVista/VTK with OSMesa (CPU-rendering) in JupyterLab:
 ```bash
-docker build --target jupyter --build-arg='VTK_VERSION=9.3.0' --build-arg='VTK_VARIANT=osmesa' -t ghcr.io/banesullivan/pyvista:3.11-9.3.0 .
+docker build --target jupyter --build-arg='VTK_VERSION=9.3.1' --build-arg='VTK_VARIANT=osmesa' -t ghcr.io/banesullivan/pyvista .
 
-docker run -it -p 8888:8888 --rm --runtime=nvidia --gpus all ghcr.io/banesullivan/pyvista:3.11-9.3.0
+docker run -it -p 8888:8888 --rm --runtime=nvidia --gpus all ghcr.io/banesullivan/pyvista
 ```
 
 PyVista/VTK with EGL (GPU-rendering) in JupyterLab:
 ```bash
-docker build --target jupyter --build-arg='VTK_VERSION=9.3.0' --build-arg='VTK_VARIANT=egl' -t ghcr.io/banesullivan/pyvista-gpu:3.11-9.3.0 .
+docker build --target jupyter --build-arg='VTK_VERSION=9.3.0' --build-arg='VTK_VARIANT=egl' -t ghcr.io/banesullivan/pyvista-gpu .
 
-docker run -it -p 8888:8888 --rm --runtime=nvidia --gpus all ghcr.io/banesullivan/pyvista-gpu:3.11-9.3.0
+docker run -it -p 8888:8888 --rm --runtime=nvidia --gpus all ghcr.io/banesullivan/pyvista-gpu
 ```
 
 ## Manual Build
