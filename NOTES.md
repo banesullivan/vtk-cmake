@@ -31,9 +31,18 @@ docker buildx create \
     --driver docker-container \
     --use --bootstrap
 
+
 docker buildx build \
     --push \
-    --platform linux/arm/v7,linux/arm64/v8,linux/amd64 \
+    --platform linux/arm64/v8,linux/amd64 \
+    --target builder \
+    --build-arg="VTK_VERSION=9.3.1" \
+    -t ghcr.io/banesullivan/vtk-builder:3.12-9.3.1 \
+    .
+
+docker buildx build \
+    --push \
+    --platform linux/arm64/v8,linux/amd64 \
     --target slim \
     --build-arg="VTK_VERSION=9.3.1" \
     -t ghcr.io/banesullivan/python-vtk:3.12-9.3.1 \
@@ -41,7 +50,7 @@ docker buildx build \
 
 docker buildx build \
     --push \
-    --platform linux/arm/v7,linux/arm64/v8,linux/amd64 \
+    --platform linux/arm64/v8,linux/amd64 \
     --target jupyter \
     --build-arg="VTK_VERSION=9.3.1" \
     -t ghcr.io/banesullivan/pyvista:3.12-9.3.1 \
@@ -49,7 +58,7 @@ docker buildx build \
 
 docker buildx build \
     --push \
-    --platform linux/arm/v7,linux/arm64/v8,linux/amd64 \
+    --platform linux/arm64/v8,linux/amd64 \
     --target jupyter \
     --build-arg="VTK_VERSION=9.3.1" \
     --build-arg="VTK_VARIANT=egl" \
