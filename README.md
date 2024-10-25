@@ -54,7 +54,7 @@ Or you can specify specific versions of Python and VTK by:
 docker build --target slim --build-arg='PYTHON_VERSION=3.12' -t ghcr.io/banesullivan/python-vtk .
 
 # Build VTK 9.3 with EGL (defaults to Python 3.12)
-docker build --target slim --build-arg='VTK_VERSION=9.3.1' --build-arg='VTK_VARIANT=egl' -t ghcr.io/banesullivan/python-vtk .
+docker build --target slim --build-arg='VTK_VERSION=v9.3.1' --build-arg='VTK_VARIANT=egl' -t ghcr.io/banesullivan/python-vtk .
 ```
 
 After building, you can extract the wheel or use that base image for all your VTK Python needs.
@@ -65,7 +65,7 @@ To run a JupyterLab instance with EGL and access to NVIDIA GPUs:
 
 ```bash
 # Build VTK 9.3 with EGL for use in Jupyter
-docker build --target jupyter --build-arg='VTK_VERSION=9.3.1' --build-arg='VTK_VARIANT=egl' -t ghcr.io/banesullivan/pyvista-gpu .
+docker build --target jupyter --build-arg='VTK_VERSION=v9.3.1' --build-arg='VTK_VARIANT=egl' -t ghcr.io/banesullivan/pyvista-gpu .
 
 # Run the image with NVIDIA runtime and GPU access
 docker run -it -p 8888:8888 --rm --runtime=nvidia --gpus all ghcr.io/banesullivan/pyvista-gpu
@@ -73,14 +73,14 @@ docker run -it -p 8888:8888 --rm --runtime=nvidia --gpus all ghcr.io/banesulliva
 
 PyVista/VTK with OSMesa (CPU-rendering) in JupyterLab:
 ```bash
-docker build --target jupyter --build-arg='VTK_VERSION=9.3.1' --build-arg='VTK_VARIANT=osmesa' -t ghcr.io/banesullivan/pyvista .
+docker build --target jupyter --build-arg='VTK_VERSION=v9.3.1' --build-arg='VTK_VARIANT=osmesa' -t ghcr.io/banesullivan/pyvista .
 
 docker run -it -p 8888:8888 --rm --runtime=nvidia --gpus all ghcr.io/banesullivan/pyvista
 ```
 
 PyVista/VTK with EGL (GPU-rendering) in JupyterLab:
 ```bash
-docker build --target jupyter --build-arg='VTK_VERSION=9.3.0' --build-arg='VTK_VARIANT=egl' -t ghcr.io/banesullivan/pyvista-gpu .
+docker build --target jupyter --build-arg='VTK_VERSION=v9.3.0' --build-arg='VTK_VARIANT=egl' -t ghcr.io/banesullivan/pyvista-gpu .
 
 docker run -it -p 8888:8888 --rm --runtime=nvidia --gpus all ghcr.io/banesullivan/pyvista-gpu
 ```
