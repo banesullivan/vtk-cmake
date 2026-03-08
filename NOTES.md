@@ -4,22 +4,15 @@ For me to locally build and push docker images:
 
 ```bash
 docker build \
-    --build-arg="VTK_VERSION=v9.3.1" \
+    --build-arg="VTK_VERSION=v9.6.0" \
     --target slim \
-    -t ghcr.io/banesullivan/python-vtk:3.12-9.3.1 \
+    -t ghcr.io/banesullivan/python-vtk:3.12-9.6.0 \
     .
 
 docker build \
-    --build-arg="VTK_VERSION=v9.3.1" \
+    --build-arg="VTK_VERSION=v9.6.0" \
     --target jupyter \
-    -t ghcr.io/banesullivan/pyvista:3.12-9.3.1 \
-    .
-
-docker build \
-    --build-arg="VTK_VERSION=v9.3.1" \
-    --build-arg="VTK_VARIANT=egl" \
-    --target jupyter \
-    -t ghcr.io/banesullivan/pyvista-gpu:3.12-9.3.1 \
+    -t ghcr.io/banesullivan/pyvista:3.12-9.6.0 \
     .
 ```
 
@@ -36,33 +29,24 @@ docker buildx build \
     --push \
     --platform linux/arm64/v8,linux/amd64 \
     --target builder \
-    --build-arg="VTK_VERSION=v9.3.1" \
-    -t ghcr.io/banesullivan/vtk-builder:3.12-9.3.1 \
+    --build-arg="VTK_VERSION=v9.6.0" \
+    -t ghcr.io/banesullivan/vtk-builder:3.12-9.6.0 \
     .
 
 docker buildx build \
     --push \
     --platform linux/arm64/v8,linux/amd64 \
     --target slim \
-    --build-arg="VTK_VERSION=v9.3.1" \
-    -t ghcr.io/banesullivan/python-vtk:3.12-9.3.1 \
+    --build-arg="VTK_VERSION=v9.6.0" \
+    -t ghcr.io/banesullivan/python-vtk:3.12-9.6.0 \
     .
 
 docker buildx build \
     --push \
     --platform linux/arm64/v8,linux/amd64 \
     --target jupyter \
-    --build-arg="VTK_VERSION=v9.3.1" \
-    -t ghcr.io/banesullivan/pyvista:3.12-9.3.1 \
-    .
-
-docker buildx build \
-    --push \
-    --platform linux/arm64/v8,linux/amd64 \
-    --target jupyter \
-    --build-arg="VTK_VERSION=v9.3.1" \
-    --build-arg="VTK_VARIANT=egl" \
-    -t ghcr.io/banesullivan/pyvista-gpu:3.12-9.3.1 \
+    --build-arg="VTK_VERSION=v9.6.0" \
+    -t ghcr.io/banesullivan/pyvista:3.12-9.6.0 \
     .
 ```
 

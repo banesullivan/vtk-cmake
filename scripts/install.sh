@@ -9,14 +9,11 @@ apt-get install --no-install-recommends --yes \
   ninja-build \
   libboost-all-dev
 
-# OSMesa build dependencies
+# OSMesa and EGL build dependencies (both needed for unified build)
 apt-get install --no-install-recommends --yes \
   libosmesa6-dev \
-
-# EGL build dependencies
-apt-get install --no-install-recommends --yes \
-    libopengl-dev \
-    libglvnd-dev \
-    libgl-dev \
-    libglx-dev \
-    libegl-dev
+  libopengl-dev \
+  libglvnd-dev \
+  libgl-dev \
+  libglx-dev \
+  libegl-dev
