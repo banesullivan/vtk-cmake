@@ -1,0 +1,9 @@
+include("${CMAKE_CURRENT_LIST_DIR}/_base.cmake")
+
+# macOS uses Cocoa + system OpenGL (no OSMesa/EGL).
+set(VTK_USE_COCOA ON CACHE BOOL "")
+set(VTK_USE_X OFF CACHE BOOL "")
+
+set(CMAKE_OSX_DEPLOYMENT_TARGET "11.0" CACHE STRING "")
+
+set(VTK_DIST_NAME_SUFFIX "" CACHE STRING "")

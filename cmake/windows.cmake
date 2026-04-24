@@ -9,7 +9,7 @@ set(Python3_INCLUDE_DIRS "C:\\Users\\banes\\miniconda3\\envs\\pyvista\\Include" 
 
 set(VTK_MODULE_ENABLE_VTK_GUISupportMFC NO CACHE STRING "")
 
-# Ref https://gitlab.kitware.com/vtk/vtk/-/blob/master/.gitlab/ci/configure_windows.cmake
+# Ref https://gitlab.kitware.com/vtk/vtk/-/blob/master/.gitlab/ci/configure_wheel.cmake
 set(VTK_MODULE_ENABLE_VTK_RenderingExternal NO CACHE STRING "") # glut
 # Windows-only features
 set(VTK_USE_MICROSOFT_MEDIA_FOUNDATION ON CACHE BOOL "")
